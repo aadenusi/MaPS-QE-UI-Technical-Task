@@ -1,14 +1,16 @@
 module.exports = {
   default: {
-    require: ['step-definitions/**/*.js'],
+    paths: ['tests/features/**/*.feature'],
+    requireModule: ['ts-node/register/transpile-only'],
+    require: ['tests/stepDefinitions/**/*.ts', 'tests/support/hooks.ts'],
     format: [
-      'progress-bar',
+      'progress',
       'html:cucumber-report.html',
       'json:cucumber-report.json'
     ],
     dryRun: false,
     failFast: false,
-    parallel: 1,
+    parallel: 0,
     strict: true,
     timeout: 60000,
     worldParameters: {
@@ -16,26 +18,32 @@ module.exports = {
     }
   },
   headless: {
-    require: ['step-definitions/**/*.js'],
+    paths: ['tests/features/**/*.feature'],
+    requireModule: ['ts-node/register/transpile-only'],
+    require: ['tests/stepDefinitions/**/*.ts', 'tests/support/hooks.ts'],
     format: [
       'progress',
       'json:reports/cucumber-report.json'
     ],
-    parallel: 1,
+    parallel: 0,
     timeout: 60000
   },
   headed: {
-    require: ['step-definitions/**/*.js'],
+    paths: ['tests/features/**/*.feature'],
+    requireModule: ['ts-node/register/transpile-only'],
+    require: ['tests/stepDefinitions/**/*.ts', 'tests/support/hooks.ts'],
     format: [
-      'progress-bar',
+      'progress',
       'html:reports/cucumber-report.html'
     ],
-    parallel: 1,
+    parallel: 0,
     timeout: 60000,
     publishQuiet: true
   },
   smoke: {
-    require: ['step-definitions/**/*.js'],
+    paths: ['tests/features/**/*.feature'],
+    requireModule: ['ts-node/register/transpile-only'],
+    require: ['tests/stepDefinitions/**/*.ts', 'tests/support/hooks.ts'],
     tags: '@smoke',
     format: ['progress', 'json:reports/smoke-report.json'],
     timeout: 60000
