@@ -179,15 +179,6 @@ Notes:
 - BDD/Gherkin usage is optional in the brief and intentionally used here for readability.
 - Tests run serially (`parallel: 0`) to prioritize determinism and easier debugging.
 
-## Reports and Artifacts
-
-After execution, artifacts may include:
-
-- cucumber-report.html
-- cucumber-report.json
-- reports/
-- screenshots/
-
 ## GitHub Workflow
 
 The repository includes CI at .github/workflows/qa.yml.
@@ -231,3 +222,37 @@ Notes:
 
 - https://cucumber.io/docs/cucumber/
 - https://playwright.dev/docs/intro
+
+
+### The Task - Part 2 (Bonus Task) Accessibility Test
+
+Description:
+When navigating the page using the keyboard (Tab key), the focus correctly moves through the form fields (Full name - Email - Your message), but when it reaches the “Done” button, the button does not display any visible focus indicator.
+
+Expected Behavior:
+Interactive elements especially buttons must show a clear visible focus state when selected via keyboard. This ensures keyboard-only users can understand which element is currently active.
+
+Actual Behavior:
+The “Done” button appears visually unchanged while focused. There is no outline, highlight, shadow, or any other visual cue to indicate focus.
+
+Impact:
+. Keyboard-only users may lose track of their position on the page.
+. Users with motor disabilities or relying on assistive technologies may be unable to submit the form.
+. Fails accessibility requirements for perceivable and operable UI.
+
+Steps to Reproduce:
+1. Open the page.
+2. Press Tab repeatedly to move through the form fields.
+3. Stop when the focus reaches the “Done” button.
+4. Observe that the button does not show any visible focus style.
+
+Severity:
+High - Blocks keyboard accessibility and violates WCAG compliance.
+
+List Of Bugs
+1. The <html> element is missing a lang attribute, which can affect how a screen reader interprets and pronounces the page content.
+2. The document is missing a <title> element, meaning screen readers have no page title to announce when the page first loads.
+3. <img> elements does not contain alternative text, preventing screen readers from conveying the meaning or purpose of the images.
+4. Keyboard users cannot navigate to the “Image” button using the Tab key, making it inaccessible without a mouse.
+5. The robot image lacks an appropriate accessible description.
+6. The screen reader reads the “Done” button text multiple times, causing redundancy and confusion for assistive technology users.
