@@ -8,7 +8,7 @@
     "test": "cucumber-js --parallel 0",
     "test:headless": "cross-env HEADLESS=true cucumber-js --parallel 0",
     "test:headed": "cross-env HEADLESS=false cucumber-js --parallel 0",
-    "test:report": "cross-env HEADLESS=true cucumber-js --parallel 0 --format progress --format html:cucumber-report.html --format json:cucumber-report.json",
+    "test:report": "cross-env HEADLESS=true cucumber-js --parallel 0 --format progress --format html:reports/cucumber-report.html --format json:reports/cucumber-report.json",
     "test:chrome": "cross-env BROWSER=chromium cucumber-js --parallel 0",
     "test:firefox": "cross-env BROWSER=firefox cucumber-js --parallel 0",
     "test:webkit": "cross-env BROWSER=webkit cucumber-js --parallel 0",

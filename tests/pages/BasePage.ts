@@ -148,7 +148,6 @@ class BasePage {
       : `.govuk-radios label:has-text("${matchingOption.label}")`;
 
     await this.page.locator(selector).first().click();
-    await this.page.waitForTimeout(500);
 
     return true;
   }
